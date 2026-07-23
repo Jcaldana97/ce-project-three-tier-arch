@@ -28,10 +28,10 @@
 
 Application displays:
 
-	- [x] Instance ID
-	- [x] Availability Zone
-	- [x] Database connection status
-	- [x] Health check endpoint (/health)
+- [x] Instance ID
+- [x] Availability Zone
+- [x] Database connection status
+- [x] Health check endpoint (/health)
 
 ## Tier 3: Data Layer (10%)
 

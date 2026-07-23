@@ -92,7 +92,7 @@ server.listen(8080, () => {
 
 Register target in Target Group with port 8080
 
-![Target with Port 8080](screenshots/ts-target-group-port8080)
+![Target with Port 8080](screenshots/ts-target-group-port8080.png)
 
 
 
