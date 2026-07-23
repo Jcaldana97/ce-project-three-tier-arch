@@ -35,9 +35,9 @@ Application displays:
 
 ## Tier 3: Data Layer (10%)
 
-- [ ] Database placeholder (can use EC2 with simulated DB) OR RDS database (bonus points)
-- [ ] Deployed in isolated private subnet
-- [ ] Only accessible from application tier
+- [x] Database placeholder (can use EC2 with simulated DB) OR RDS database (bonus points)
+- [x] Deployed in isolated private subnet
+- [x] Only accessible from application tier
 
 ## Security Configuration (20%)
 

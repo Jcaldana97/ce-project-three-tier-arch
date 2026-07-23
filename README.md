@@ -1,2 +1,9 @@
-# ce-project-three-tier-arch
-Project 1: Create Three Tier Architecture
+# Three-tier Architecture Project
+
+## Project overview
+
+## Architecture description
+
+## How to deploy/replicate
+
+## Testing instructions
