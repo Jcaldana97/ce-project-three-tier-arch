@@ -101,3 +101,54 @@ Run ```bash pm2 reload app-server ``` to reload the application.
 Run ```bash curl localhost:8080/health ``` to check if health status is correct
 
 ---
+
+## Host key verification failed
+
+### Description Issue
+
+Database connection through bastion refused due to warning "Remote host identification has changed!" 
+
+![DB-Bastion connection failed](screenshots/ts-host-key-changed.png)
+
+### Solution
+
+Run the following command to remove any key that the db IP address may have attached: 
+
+```bash
+ssh-keygen -R DB-PRIVATE-IP
+```
+
+Try to access again using bastion.
+
+---
+
+## Database not responding to ports 3306 or 5432
+
+### Description Issue
+
+Database instance is not running simulated responses
+
+### Troubleshooting
+
+Run ```bash sudo ss -tulpn | grep :3306 ``` to check the current responses on the specific port 
+
+### Solution
+
+NCat was not installed properly when running the script in the instance creation. 
+
+If the instance is already created, run ```bash sudo dnf install nmap-ncat ``` to install the dependency. 
+
+To solve the issue permanently (create a healthy database instance), modify the userdata script as follows: 
+
+```bash
+#!/bin/bash
+# This simulates a database server
+# In production, you'd use RDS, not EC2
+
+sudo yum update -y
+sudo yum install -y nc netcat
+sudo dnf install -y nmap-ncat
+```
+
+---
+
