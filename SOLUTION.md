@@ -27,6 +27,7 @@
 - [x] Registered with ALB target group
 
 Application displays:
+
 	- [x] Instance ID
 	- [x] Availability Zone
 	- [x] Database connection status
