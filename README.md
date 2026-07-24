@@ -23,7 +23,7 @@ The purpose of the project is the design, building and deployment of a complete 
 	- ALB SG: Allow 80/443 from 0.0.0.0/0
 	- App SG: Allow 8080/443 from ALB SG only
 	- Data SG: Allow 3306/5432 from App SG only
-	- Bastion SG: Allow SSH from local IP (other SGs must include SSH inbound rule form this SG, just for debugging purpose)
+	- Bastion SG: Allow SSH from local IP to the other SGs (other SGs must include SSH inbound rule form this SG, just for debugging purpose)
 
 
 ## How to deploy/replicate
