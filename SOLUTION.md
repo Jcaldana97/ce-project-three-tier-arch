@@ -50,11 +50,21 @@ Security groups for each tier:
 
 ## Documentation (10%)
 
-- [ ] Architecture diagram (clear and professional)
+- [x] Architecture diagram (clear and professional)
 
 README with:
-- [ ] Architecture overview
-- [ ] Design decisions and trade-offs
-- [ ] Security strategy
+- [x] Architecture overview
+- [x] Design decisions and trade-offs
+- [x] Security strategy
 - [ ] Testing results
 - [ ] Cost breakdown
+
+## Should Have (Recommended - 15%)
+- [x] Multi-AZ NAT Gateway (high availability)
+- [ ] Auto Scaling Group for application tier
+- [ ] RDS Multi-AZ database
+- [ ] HTTPS listener with ACM certificate
+- [x] CloudWatch alarms for monitoring
+- [ ] Centralized session storage (ElastiCache)
+- [x] VPC Flow Logs enabled
+- [x] Cost allocation tags
