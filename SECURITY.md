@@ -2,6 +2,9 @@
 
 ## Security Group Rules
 
+** Security Group Diagram **
+![Security Group Diagram](architecture/security-groups-diagram.png)
+
 ### vpc-bastion
 
 | Direction | Port | Source / Destination | Purpose |

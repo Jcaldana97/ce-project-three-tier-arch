@@ -6,6 +6,9 @@ The purpose of the project is the design, building and deployment of a complete 
 
 ## Architecture description
 
+** Architecture Diagram: General overview **
+![Architecture Diagram](architecture/architecture-diagram.png)
+
 - VPC with Networking Segmentation
 
 - 3-tier architecture 
