@@ -108,6 +108,8 @@ The purpose of the project is the design, building and deployment of a complete 
 
 ## Testing instructions
 
+See /test/test-plan.md and failover-test.md for testing instructions.
+
 ## Cost breakdown
 
 
