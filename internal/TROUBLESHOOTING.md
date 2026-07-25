@@ -33,9 +33,11 @@ Node.js v18.20.8
 
 ### Solution
 
-Run ```bash npm install pg``` to install the dependency needed. 
-Run ```bash sudo chmod 777 app.log``` to allow edition of app.log file.
-Run the application using the command ```bash sudo nohup node server.js > app.log 2>&1 &```.
+Run ```npm install pg``` to install the dependency needed. 
+
+Run ```sudo chmod 777 app.log``` to allow edition of app.log file.
+
+Run the application using the command ```sudo nohup node server.js > app.log 2>&1 &```.
 
 
 ## Application Not Running on Restart
@@ -136,7 +138,7 @@ Run ```bash sudo ss -tulpn | grep :3306 ``` to check the current responses on th
 
 NCat was not installed properly when running the script in the instance creation. 
 
-If the instance is already created, run ```bash sudo dnf install nmap-ncat ``` to install the dependency. 
+If the instance is already created, run ```sudo dnf install nmap-ncat ``` to install the dependency. 
 
 To solve the issue permanently (create a healthy database instance), modify the userdata script as follows: 
 
