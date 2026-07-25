@@ -29,7 +29,6 @@
 |                      | NAT Gateway deployed in multi-AZ used by private workloads                                  |   ✅   |
 |                      | VPC Endpoints configured for AWS services (S3, SSM, ECR, CloudWatch, Secrets Manager, etc.) |   ✅   |
 |                      | DNS Hostnames enabled                                                                       |   ✅   |
-|----------------------|---------------------------------------------------------------------------------------------|--------|
 | Security             | Security Groups follow least privilege                                                      |   ✅   |
 |                      | Security Groups reference other Security Groups instead of CIDRs where possible             |   ✅   |
 |                      | No unrestricted inbound access except where explicitly required                             |   ✅   |
@@ -40,14 +39,12 @@
 |                      | IAM roles used instead of static credentials                                                |   [ ]  |
 |                      | Secrets stored in AWS Secrets Manager or Parameter Store                                    |   [ ]  |
 |                      | Encryption enabled using AWS KMS                                                            |   [ ]  |
-|----------------------|---------------------------------------------------------------------------------------------|--------|
 | Availability         | Resources deployed across multiple AZs                                                      |   ✅   |
 |                      | Application Load Balancer configured                                                        |   ✅   |
 |                      | Auto Scaling configured                                                                     |   [ ]  |
 |                      | Database Multi-AZ enabled                                                                   |   [ ]  |
 |                      | Health checks configured                                                                    |   ✅   |
 |                      | Backup strategy documented and tested                                                       |   [ ]  |
-|----------------------|---------------------------------------------------------------------------------------------|--------|
 | Monitoring & Logging | CloudTrail enabled                                                                          |   [ ]  |
 |                      | VPC Flow Logs enabled                                                                       |   ✅   |
 |                      | CloudWatch metrics collected                                                                |   [ ]  |
@@ -56,38 +53,31 @@
 |                      | RDS logs enabled                                                                            |   [ ]  |
 |                      | Central log retention policy defined                                                        |   [ ]  |
 |                      | Dashboards available for operational visibility                                             |   ✅   |
-|----------------------|---------------------------------------------------------------------------------------------|--------|
 | Security Monitoring  | Security Hub enabled                                                                        |   [ ]  |
 |                      | AWS Config enabled                                                                          |   [ ]  |
 |                      | Inspector enabled                                                                           |   [ ]  |
 |                      | Findings routed to an incident response process                                             |   [ ]  |
-|----------------------|---------------------------------------------------------------------------------------------|--------|
 | Operations           | Infrastructure managed as Code (Terraform, CDK, CloudFormation)                             |   [ ]  |
 |                      | Version control in place                                                                    |   [ ]  |
 |                      | Automated deployment pipeline                                                               |   [ ]  |
 |                      | Change approval process documented                                                          |   [ ]  |
-|----------------------|---------------------------------------------------------------------------------------------|--------|
 | Performance          | Appropriate instance types selected                                                         |   ✅   |
 |                      | Load testing completed                                                                      |   ✅   |
 |                      | Scaling policies validated                                                                  |   [ ]  |
-|----------------------|---------------------------------------------------------------------------------------------|--------|
 | Cost Optimization    | NAT Gateway traffic minimized via VPC Endpoints                                             |   ✅   |
 |                      | Idle resources identified                                                                   |   [ ]  |
 |                      | EBS volumes right-sized                                                                     |   [ ]  |
 |                      | Cost allocation tags applied                                                                |   ✅   |
 |                      | Budgets and billing alarms configured                                                       |   [ ]  |
-|----------------------|---------------------------------------------------------------------------------------------|--------|
 | Disaster Recovery    | Backups tested                                                                              |   [ ]  |
 |                      | Restore procedures documented                                                               |   [ ]  |
 |                      | Cross-region backup strategy defined (if required)                                          |   [ ]  |
 |                      | Disaster Recovery exercise completed                                                        |   [ ]  |
-|----------------------|---------------------------------------------------------------------------------------------|--------|
 | Documentation        | Network diagram available                                                                   |   ✅   |
 |                      | Security architecture documented                                                            |   ✅   |
 |                      | Route tables documented                                                                     |   ✅   |
 |                      | Security Group rules documented                                                             |   ✅   |
 |                      | Contact and escalation procedures documented                                                |   [ ]  |
-|----------------------|---------------------------------------------------------------------------------------------|--------|
 
 ## Disaster recovery planning
 
