@@ -92,7 +92,7 @@ server.listen(8080, () => {
 
 Register target in Target Group with port 8080
 
-![Target with Port 8080](screenshots/ts-target-group-port8080.png)
+![Target with Port 8080](../screenshots/ts-target-group-port8080.png)
 
 
 
@@ -108,7 +108,7 @@ Run ```bash curl localhost:8080/health ``` to check if health status is correct
 
 Database connection through bastion refused due to warning "Remote host identification has changed!" 
 
-![DB-Bastion connection failed](screenshots/ts-host-key-changed.png)
+![DB-Bastion connection failed](../screenshots/ts-host-key-changed.png)
 
 ### Solution
 
