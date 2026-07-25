@@ -57,14 +57,14 @@ README with:
 - [x] Design decisions and trade-offs
 - [x] Security strategy
 - [x] Testing results
-- [ ] Cost breakdown
+- [x] Cost breakdown
 
 ## Should Have (Recommended - 15%)
 - [x] Multi-AZ NAT Gateway (high availability)
+- [x] CloudWatch alarms for monitoring
+- [x] VPC Flow Logs enabled
+- [x] Cost allocation tags
 - [ ] Auto Scaling Group for application tier
 - [ ] RDS Multi-AZ database
 - [ ] HTTPS listener with ACM certificate
-- [x] CloudWatch alarms for monitoring
 - [ ] Centralized session storage (ElastiCache)
-- [x] VPC Flow Logs enabled
-- [x] Cost allocation tags

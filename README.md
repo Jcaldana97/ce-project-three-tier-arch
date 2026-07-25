@@ -108,9 +108,26 @@ The purpose of the project is the design, building and deployment of a complete 
 
 ## Testing instructions
 
-See /test/test-plan.md and failover-test.md for testing instructions.
+See /test/test-plan.md and /test/failover-test.md for testing instructions.
 
 ## Cost breakdown
 
+| Service                        | Monthly Cost (USD) |
+|--------------------------------|--------------------|
+| VPC	                         | $0                 |
+| Internet Gateway	             | $0                 |
+| Subnets					     | $0                 |
+| Route Tables	                 | $0                 |
+| EC2 t3.micro instances	     | $30.37             |
+| EC2 EBS gp3 storage	         | $2.56              |
+| Application Load Balancer	     | $16.43             |
+| NAT Gateway hourly cost	     | $32.85             |
+| NAT Gateway data processing    | $4.50              |     
+| RDS db.t4g.micro compute	     | $24.82             |
+| RDS gp3 storage                | $11.50             |
+| RDS backups	                 | $0                 |
+| CloudWatch basic metrics	     | $0                 |
+| VPC Flow Logs                  | ~$5                |
 
+**Total monthly cost :** ~$128 USD 
 
