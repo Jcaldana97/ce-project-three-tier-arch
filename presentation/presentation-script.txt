@@ -3,7 +3,7 @@ with a Three-Tier Architecture.
 
 2. I'll be starting with an overview of the architecture deployed, then I'll move to
 the challenges I faced and the solutions to them. After that, I will show you the
-cost breakdown and possible optimization strategies as well as projects savings, some
+cost breakdown and possible optimization strategies, some
 of them being part of the improvements and next steps of the project and at the end
 I will demonstrate the functionality of the project. 
 
@@ -22,24 +22,79 @@ placed in a different Availability Zone.
 5. Now how will the information flow? First, to have a point of communication from the outside
 an Internet Gateway was implemented to receive request from the user and send request to the 
 cloud. The IGW will forward the request to the presentation subnet (basically where the ALB will be), 
-which will then send these request through port 8080 to the application layer to perform the corresponding actions, 
-and then only the app tier may consult the data servers for required data to be read or stored.
+which will then send these request through port 8080 to the application layer to perform the 
+corresponding actions, and then only the app tier may consult the data servers for required 
+data to be read or stored.
 A NAT Gateway is attached to the public subnet to receive requests from the app-tiers to be send
 to the outside, for package download purposes. 
 
 6. To achieve the traffic flow plan in a secure way, the following security groups were created: 
 - One security group for the application load balancer that inbound traffics through HTTP and HTTPS
-- One security group for the application tier which allows only inbound traffic from alb-sg and outbound traffic to the database tier. 
-- One security group for the database tier, which allows only inbound traffics through MySQL and PostgreSQL from the app tier. 
-- Additionally, a bastion security group was created to allow an instance act as a bastion for debugging purposes. 
+- One security group for the application tier which allows only inbound traffic from alb-sg and 
+  outbound traffic to the database tier. 
+- One security group for the database tier, which allows only inbound traffics through MySQL and 
+  PostgreSQL from the app tier. 
+- Additionally, a bastion security group was created to allow an instance act as a bastion for 
+  debugging purposes. 
 
-7. Now this is the overall architecture, where we have the three layers with 2 subnets each. The NAT gateway available
-for all availability zones, the application load balancer which decides which app server from its target group will 
-perform the request, and the data servers which are only accessible from the app. 
+7. Now this is the overall architecture, where we have the three layers with 2 subnets each. 
+The NAT gateway available for all availability zones, the application load balancer which decides 
+which app server from its target group will perform the request, and the data servers which are 
+only accessible from the app. 
 
 8. Now moving to the challenges I faced, most of them happened during the creation of the servers. 
 
-9. The first one was seen after creating the app instances. On the target group, the instances were marked as
-unhealthy at the first run. The app logs showed me this error. Looks like the 'pg' package was not installed. 
-So the solution was to actually install pg on the server and run the application again. A permanent solution would be
-to update the app code to install pg from the beginning. 
+9. The first one was seen after creating the app instances. On the target group, the instances were 
+marked as unhealthy at the first run. The app logs showed me this error. Looks like the 'pg' package 
+was not installed. 
+So the solution was to actually install pg on the server and run the application again. 
+A permanent solution would be to update the app-userdata script to install pg from the beginning. 
+
+10. The second issue was to let the server restart the application automatically. To solve this, 
+I installed pm2 and added the application to the ecosystem to let pm2 manage the application. 
+
+11. Now, after creating the app instances, I created the database placeholder. But when I tried 
+to access via bastion, this warning appeared and didn't let me get access to the db. 
+To solve this, I run this command with the private IP of the database. 
+What this command does is basically to remove any key that the Database IP address might have. 
+
+12. I also had issues running the simulation of the database, the problem was that the OS was not 
+recognizing netcat and the correct package to be downloaded was nmap-ncat. So I made that update 
+on the database code. 
+
+13. Now let's move to the costs analysis I did. 
+
+14. This table shows the monthly cost breakdown considering the features I have on the VPC:
+- The VPC itself, the internet gateway, the 6 subnets and the Route tables, as well as any RDS 
+  backups I may have and CloudWatch basic metrics are free. 
+- Then I considered the 4 EC2 Instances I created and the gp3 storage of 8 GB
+- The application load balancer, one NAT gateway processing 100 GB per month
+- And I consider replacing the placeholder for a RDS database of 100 GB
+- As one of the extra-features I added the VPC flow logs, which cost around $5
+It gives me a total monthly cost of 128 USD
+
+15. Now these are some cost optimization strategies, some from my own and some other I researched: 
+First, enabling auto-scaling to have only the sufficient instances needed, add VPC Endpoints for 
+some services to reduce NAT Gateway usage. Apply saving plans to reduce On-demand costs. 
+In the cost breakdown I considered one db per availability zone, so if the project allows it, 
+having just a single-AZ database may help to reduce costs. And finally, optimize logging retention.  
+
+16. Now moving to the Improvements and Next Steps
+
+17. 
+In short term I will replace the bastion with the Session Manager, since it has no inbound ports, 
+there is no public IP, the access is based in IAM roles, reduces the attack surface and there is no need
+for SSH key management. Then I will replace the database placeholder to work with an actual DB. I will update
+the health checks to monitor also the CPU Utilization which I currently just monitor with CloudWatch. 
+I will add some logging and remove unused rules in security groups. 
+In long-term, I will add the VPC points that I mentioned in the cost optimization strategies to reduce the 
+NAT Gateway traffic and reduce costs. I will add also the auto-scaling, I will increase the security with IAM 
+authentication for example, and for stricter security requirements, services like AWS Network Firewall, 
+Stateful Protection and Domain filtering might be good. 
+
+18. Now let's move to the demonstration. 
+
+19. Do you have any questions? 
+
+20. Thanks for your attention. 
+20. Thanks for your attention. 
