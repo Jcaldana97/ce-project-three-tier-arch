@@ -1,0 +1,45 @@
+1. Hello everyone. Today I will present my first project consisting on a Network 
+with a Three-Tier Architecture. 
+
+2. I'll be starting with an overview of the architecture deployed, then I'll move to
+the challenges I faced and the solutions to them. After that, I will show you the
+cost breakdown and possible optimization strategies as well as projects savings, some
+of them being part of the improvements and next steps of the project and at the end
+I will demonstrate the functionality of the project. 
+
+3. Now let's start by analyzing the architecture. 
+
+4. As mentioned before, the network is based on a three-tier architecture, which basically
+means that we have 3 layers, one for the presentation, another one for the applications and 
+the last one for the data. Having that in mind, the CIDR planning consists of having a VPC
+with the address 10.0.0.0/16, leaving the last 2 bytes free for the subnets. Then we have
+2 subnets per tier, the presentations subnets with the addresses 10.0.1.0/24 and 10.0.2.0/24, 
+the application subnets have the addresses 10.0.11.0/24 and 10.0.12.0/24, 
+and the data addresses with 10.0.21.0/24 and 10.0.22.0/24. Each address of each subnet is
+placed in a different Availability Zone. 
+
+
+5. Now how will the information flow? First, to have a point of communication from the outside
+an Internet Gateway was implemented to receive request from the user and send request to the 
+cloud. The IGW will forward the request to the presentation subnet (basically where the ALB will be), 
+which will then send these request through port 8080 to the application layer to perform the corresponding actions, 
+and then only the app tier may consult the data servers for required data to be read or stored.
+A NAT Gateway is attached to the public subnet to receive requests from the app-tiers to be send
+to the outside, for package download purposes. 
+
+6. To achieve the traffic flow plan in a secure way, the following security groups were created: 
+- One security group for the application load balancer that inbound traffics through HTTP and HTTPS
+- One security group for the application tier which allows only inbound traffic from alb-sg and outbound traffic to the database tier. 
+- One security group for the database tier, which allows only inbound traffics through MySQL and PostgreSQL from the app tier. 
+- Additionally, a bastion security group was created to allow an instance act as a bastion for debugging purposes. 
+
+7. Now this is the overall architecture, where we have the three layers with 2 subnets each. The NAT gateway available
+for all availability zones, the application load balancer which decides which app server from its target group will 
+perform the request, and the data servers which are only accessible from the app. 
+
+8. Now moving to the challenges I faced, most of them happened during the creation of the servers. 
+
+9. The first one was seen after creating the app instances. On the target group, the instances were marked as
+unhealthy at the first run. The app logs showed me this error. Looks like the 'pg' package was not installed. 
+So the solution was to actually install pg on the server and run the application again. A permanent solution would be
+to update the app code to install pg from the beginning. 
