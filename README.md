@@ -37,7 +37,7 @@ The purpose of the project is the design, building and deployment of a complete 
 	- Presentation Subnets (Public): 
 		- AZ 1: 10.0.1.0/24
 		- AZ 2: 10.0.2.0/24
-	-Application Subnets (Private):
+	- Application Subnets (Private):
 		- AZ 1: 10.0.11.0/24
 		- AZ 2: 10.0.12.0/24
 	- Data Subnets (Private): 
